@@ -19,6 +19,9 @@ class TokenStream
 public:
 	TokenStream();
 
+	Token get();
+	void push_back(Token back_token);
+
 private:
 	bool full;
 	Token buffer;
@@ -29,21 +32,66 @@ double expression();
 double term();
 double primary();
 
+TokenStream ts;
+
 int main()
-{
-	cout << "START" << endl;
+try {
+	cout << "HI" << endl;
+	double val = 0.0;
 
+	while (cin)
+	{
+		Token t = ts.get();
 
+		if (t.kind == 'q') break;
 
+		switch (t.kind)
+		{
+		case ';':
+			cout << "=" << val << endl;
+			break;
+		default:
+			ts.push_back(t);
+			val = expression();
+			break;
+		}
+	}
+
+	cout << "BY" << endl;
 	getchar();
 
 	return 0;
+}
+catch (Error e)
+{
+	cerr << "Exception!!!" << endl;
+}
+
+TokenStream::TokenStream() : full(false), buffer(0) {}
+
+Token TokenStream::get()
+{
+	if (full)
+	{
+		full = false;
+		return buffer;
+	}
+	else
+		return get_token();
+}
+
+void TokenStream::push_back(Token new_buffer)
+{
+	if (full) throw new Error();
+
+	buffer = new_buffer;
+	full = true;
 }
 
 double expression()
 {
 	double left = term();
-	Token token = get_token();
+	Token token = ts.get();
 
 	while (true)
 	{
@@ -56,17 +104,18 @@ double expression()
 			left -= term();
 			break;
 		default:
+			ts.push_back(token);
 			return left;
 		}
 
-		token = get_token();
+		token = ts.get();
 	}
 }
 
 double term()
 {
 	double left = primary();
-	Token token = get_token();
+	Token token = ts.get();
 
 	while (true)
 	{
@@ -78,16 +127,22 @@ double term()
 		case '/':
 			{
 				double denominator = primary();
-				if (denominator == 0) throw new Error();
+				if (denominator == 0) throw Error();
 				left /= denominator;
 			break;
 		}
 		default:
+			ts.push_back(token);
 			return left;
 		}
 
-		token = get_token();
+		token = ts.get();
 	}
+}
+
+double primary()
+{
+	return ts.get().value;
 }
 
 Token get_token()
@@ -99,8 +154,17 @@ Token get_token()
 	switch (ch)
 	{
 	case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
-		break;
-	case '+': case '-': case '*': case '/': case '%':
-		break;
+	{
+		cin.putback(ch);
+		double val;
+		cin >> val;
+		return Token('8', val);
+	}
+	case ';':
+	case 'q':
+	case '+': case '-': case '*': case '/': case '(': case ')':
+		return Token(ch);
+	default:
+		throw Error();
 	}
 }
