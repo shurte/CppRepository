@@ -142,7 +142,22 @@ double term()
 
 double primary()
 {
-	return ts.get().value;
+	Token token = ts.get();
+
+	switch (token.kind)
+	{
+	case '(':
+	{
+		double d = expression();
+		Token next_token = ts.get();
+		if (next_token.kind != ')') throw Error();
+		return d;
+	}
+	case '8':
+		return token.value;
+	default:
+		throw Error();
+	}
 }
 
 Token get_token()
