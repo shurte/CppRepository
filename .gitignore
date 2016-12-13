@@ -3,3 +3,6 @@
 *.v12.suo
 Debug/
 *.tlog
+*.opendb
+*.db
+*.suo
