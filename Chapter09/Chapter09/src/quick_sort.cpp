@@ -1,8 +1,9 @@
 #include <vector>
+#include <string>
 
 using namespace std;
 
-void quickSort(vector<int> &vToSort, const size_t beginIndex, const size_t endIndex)
+void quickSort(vector<string> &vToSort, vector<int> &additionalV, const size_t beginIndex, const size_t endIndex)
 {
 	if (endIndex < beginIndex) return;
 	if ((endIndex - beginIndex) < 2) return;
@@ -13,7 +14,7 @@ void quickSort(vector<int> &vToSort, const size_t beginIndex, const size_t endIn
 	size_t l = beginIndex;
 	size_t r = endIndex;
 
-	int medianeValue = vToSort[mediane];
+	string medianeValue = vToSort[mediane];
 
 	while (true)
 	{
@@ -29,17 +30,21 @@ void quickSort(vector<int> &vToSort, const size_t beginIndex, const size_t endIn
 
 		if (l == r)
 		{
-			quickSort(vToSort, beginIndex, mediane);
-			quickSort(vToSort, mediane + 1, endIndex);
+			quickSort(vToSort, additionalV, beginIndex, mediane);
+			quickSort(vToSort, additionalV, mediane + 1, endIndex);
 			return;
 		}
 		else
 		{
 			if (vToSort[l] > vToSort[r])
 			{
-				int temp = vToSort[l];
+				string temp = vToSort[l];
 				vToSort[l] = vToSort[r];
 				vToSort[r] = temp;
+
+				int temp_int = additionalV[l];
+				additionalV[l] = additionalV[r];
+				additionalV[r] = temp_int;
 			}
 
 			if (vToSort[l] == vToSort[r])

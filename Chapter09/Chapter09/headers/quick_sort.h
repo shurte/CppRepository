@@ -3,4 +3,4 @@
 
 using namespace std;
 
-void quickSort(vector<int> &vToSort, const size_t beginIndex, const size_t endIndex);
+void quickSort(vector<string> &vToSort, vector<int> &additionalV, const size_t beginIndex, const size_t endIndex);
