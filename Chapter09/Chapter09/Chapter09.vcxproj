@@ -112,10 +112,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\date.cpp" />
+    <ClCompile Include="src\quick_sort.cpp" />
     <ClCompile Include="src\runner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\date.h" />
+    <ClInclude Include="headers\quick_sort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

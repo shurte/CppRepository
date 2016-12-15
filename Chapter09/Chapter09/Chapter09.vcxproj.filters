@@ -21,9 +21,15 @@
     <ClCompile Include="src\date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\quick_sort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\date.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\quick_sort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
