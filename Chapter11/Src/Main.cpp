@@ -65,6 +65,28 @@ void chapter11_4() {
 		cout << d << endl;;
 }
 
+void chapter11_5() {
+
+	cout << "Chapter 11.5 examples:" << endl;
+
+	cout << "Input first and last name:" << endl;
+	string str;
+	cin >> str;
+	cout << str << endl;
+
+	char ch;
+	while (cin.get(ch))
+		if (ch == ';')
+			break;
+
+	// for (int i = str.length() - 1; i >= 0; --i)
+	// 	cin.putback(str[i]);
+
+	cout << "Input first and last name one more time:" << endl;
+	getline(cin, str);
+	cout << str << endl;
+}
+
 int main(int argc, char** argv) {
 
 	cout << "Chapter 11." << endl;
@@ -72,6 +94,7 @@ int main(int argc, char** argv) {
 	chapter11_2();
 	chapter11_3();
 	chapter11_4();
+	chapter11_5();
 
 	system("pause");
 	return 0;
