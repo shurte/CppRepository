@@ -5,6 +5,8 @@
 #include <vector>
 #include <sstream>
 
+#include <PunctStream.h>
+
 using namespace std;
 
 void chapter11_2() {
@@ -87,6 +89,16 @@ void chapter11_5() {
 	cout << str << endl;
 }
 
+void chapter11_7() {
+
+	cout << "Chapter 11.7 examples:" << endl;
+
+	PunctStream ps(cin);
+	ps.whitespace(" :;.,");
+	ps.setCaseSensitive(false);
+
+}
+
 int main(int argc, char** argv) {
 
 	cout << "Chapter 11." << endl;
@@ -95,6 +107,7 @@ int main(int argc, char** argv) {
 	chapter11_3();
 	chapter11_4();
 	chapter11_5();
+	chapter11_7();
 
 	system("pause");
 	return 0;
