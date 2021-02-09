@@ -34,7 +34,7 @@ jobs:
     - name: Build
       run: |
         cd udemy_cpp_cmake && cmake . -Bbuild
-        cmake --build build --target CppTemplate_docs
+        cmake --build build --target CppTemplate_Doc
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
       with:
