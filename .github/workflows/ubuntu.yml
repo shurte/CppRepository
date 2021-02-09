@@ -23,19 +23,19 @@ jobs:
         cd udemy_cpp_cmake && make install
     - name: setup
       run: |
-        make setup
+        cd udemy_cpp_cmake && make setup
     - name: prepare
       run: |
-        make prepare
+        cd udemy_cpp_cmake && make prepare
     - name: configure
       run: |
-        cmake . -Bbuild -DENABLE_COVERAGE=1 -DCMAKE_BUILD_TYPE=Coverage
+        cd udemy_cpp_cmake && cmake . -Bbuild -DENABLE_COVERAGE=1 -DCMAKE_BUILD_TYPE=Coverage
     - name: build
       run: |
-        cmake --build build -j4
+        cd udemy_cpp_cmake && cmake --build build -j4
     - name: test
       run: |
-        cd build
+        cd udemy_cpp_cmake && cd build
         make CppTemplate_Coverage
     - name: collect code coverage
-      run: bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+      run: cd udemy_cpp_cmake && bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"

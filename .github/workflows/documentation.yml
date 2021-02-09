@@ -24,19 +24,19 @@ jobs:
         cd udemy_cpp_cmake && make install
     - name: Install Doc
       run: |
-        make install_doc
+        cd udemy_cpp_cmake && make install_doc
     - name: Set up
       run: |
-        make setup
+        cd udemy_cpp_cmake && make setup
     - name: Prepare
       run: |
-        make prepare
+        cd udemy_cpp_cmake && make prepare
     - name: Build
       run: |
-        cmake . -Bbuild
+        cd udemy_cpp_cmake && cmake . -Bbuild
         cmake --build build --target CppTemplate_docs
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/html
+        publish_dir: ./udemy_cpp_cmake/docs/html
