@@ -1,0 +1,42 @@
+name: Documentation
+
+on:
+  push:
+    tags:
+      - "*"
+    branches: [ udemy_cpp_cmake ]
+
+jobs:
+  build:
+    name: Build and publish documentation
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository and submodules
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install
+      run: |
+        cd udemy_cpp_cmake && make install
+    - name: Install Doc
+      run: |
+        make install_doc
+    - name: Set up
+      run: |
+        make setup
+    - name: Prepare
+      run: |
+        make prepare
+    - name: Build
+      run: |
+        cmake . -Bbuild
+        cmake --build build --target CppTemplate_docs
+    - name: Publish
+      uses: paeceiris/action-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/html
