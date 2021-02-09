@@ -7,14 +7,14 @@
 
 bool print_hello_world()
 {
-    printf("Printf: Hello World\n");
+    printf("Printf: Hello World!!!\n");
 
     return true;
 }
 
 void cout_hello_world()
 {
-    std::cout << "Cout: Hello World" << std::endl;
+    std::cout << "Cout: Hello World!!!" << std::endl;
 }
 
 linalg::aliases::float3 print_linalg_vector()
