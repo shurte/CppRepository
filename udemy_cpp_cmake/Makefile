@@ -12,4 +12,4 @@ setup:
 prepare:
 	@rm -rf build
 	@mkdir build
-	@cd build && conan install ../11_CodeCoverage && cd .. 
+	@cd build && conan install .. && cd .. 
