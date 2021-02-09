@@ -38,4 +38,4 @@ jobs:
         cd udemy_cpp_cmake && cd build
         make CppTemplate_Coverage
     - name: collect code coverage
-      run: cd udemy_cpp_cmake && bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+      run: bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
