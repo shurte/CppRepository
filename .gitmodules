@@ -1,9 +1,9 @@
-[submodule "external/linalg"]
-	path = udemy_cpp_make/external/linalg
-	url = https://github.com/sgorsten/linalg.git
+[submodule "udemy_cpp_cmake/external/linalg"]
+	path = udemy_cpp_cmake/external/linalg
+    url = https://github.com/sgorsten/linalg.git
 	branch = master
 
-[submodule "external/loguru"]
-    path = udemy_cpp_make/external/loguru
+[submodule "udemy_cpp_cmake/external/loguru"]
+    path = udemy_cpp_cmake/external/loguru
     url = https://github.com/emilk/loguru.git
     branch = master
