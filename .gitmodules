@@ -1,0 +1,9 @@
+[submodule "udemy_cpp_make/external/linalg"]
+    path = udemy_cpp_make/external/linalg
+    url = https://github.com/sgorsten/linalg.git
+    branch = master
+
+[submodule "udemy_cpp_make/external/loguru"]
+    path = udemy_cpp_make/external/loguru
+    url = https://github.com/emilk/loguru.git
+    branch = master
