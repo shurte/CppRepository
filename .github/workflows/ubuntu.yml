@@ -1,0 +1,41 @@
+name: Ubuntu CI Test
+
+on:
+  push:
+    branches: [ udemy_cpp_cmake ]
+  pull_request:
+    branches: [ udemy_cpp_cmake ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository and submodules
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: install
+      run: |
+        cd udemy_cpp_cmake && make install
+    - name: setup
+      run: |
+        cd udemy_cpp_cmake && make setup
+    - name: prepare
+      run: |
+        cd udemy_cpp_cmake && make prepare
+    - name: configure
+      run: |
+        cd udemy_cpp_cmake && cmake . -Bbuild -DENABLE_COVERAGE=1 -DCMAKE_BUILD_TYPE=Coverage
+    - name: build
+      run: |
+        cd udemy_cpp_cmake && cmake --build build -j4
+    - name: test
+      run: |
+        cd udemy_cpp_cmake && cd build
+        make CppTemplate_Coverage
+    - name: collect code coverage
+      run: bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
